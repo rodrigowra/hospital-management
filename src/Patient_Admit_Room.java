@@ -73,7 +73,7 @@ private void fillcombo(){
          }
     }
   private void Get_Data1(){
-        String sql="select PatientID as 'Patient ID', PatientName as 'Patient Name',Remarks as 'Condition' from Patientregistration order by PatientID";
+        String sql="select PatientID as 'Patient ID', PatientName as 'Patient Name',Remarks as 'Condition' from patientregistration order by PatientID";
         try{
             con=Connect.ConnectDB();
             pst=con.prepareStatement(sql);
@@ -492,7 +492,7 @@ private void fillcombo(){
             con=Connect.ConnectDB();
             int row= jTable1.getSelectedRow();
             String table_click= jTable1.getModel().getValueAt(row, 0).toString();
-            String sql= "select * from PatientRegistration where PatientID = '" + table_click + "'";
+            String sql= "select * from patientRegistration where PatientID = '" + table_click + "'";
             pst=con.prepareStatement(sql);
             rs=  pst.executeQuery();
             if(rs.next()){

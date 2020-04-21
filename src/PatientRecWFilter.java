@@ -1,5 +1,5 @@
 
-import com.sun.xml.internal.bind.v2.schemagen.Util;
+//import com.sun.xml.internal.bind.v2.schemagen.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -152,7 +152,7 @@ private void Get_Data(){
             con=Connect.ConnectDB();
             int row= jTable1.getSelectedRow();
             String table_click= jTable1.getModel().getValueAt(row, 0).toString();
-            String sql= "select * from PatientRegistration where PatientID = '" + table_click + "'";
+            String sql= "select * from patientregistration where PatientID = '" + table_click + "'";
             pst=con.prepareStatement(sql);
             rs=  pst.executeQuery();
             if(rs.next()){

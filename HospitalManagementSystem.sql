@@ -1,3 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `HospitalManagementSystem` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+USE `HospitalManagementSystem`;
+
+DROP TABLE IF EXISTS `admitpatient_room`;
+
 CREATE TABLE `admitpatient_room` (
   `PatientID` int(10) NOT NULL,
   `Disease` varchar(50) DEFAULT NULL,
@@ -5,12 +10,14 @@ CREATE TABLE `admitpatient_room` (
   `RoomNo` int(5) DEFAULT NULL,
   `DoctorID` int(10) NOT NULL,
   `AP_Remarks` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`PatientID`),
-  KEY `RoomNo` (`RoomNo`),
-  KEY `DoctorID` (`DoctorID`),
-  CONSTRAINT `admitpatient_room_ibfk_1` FOREIGN KEY (`RoomNo`) REFERENCES `room` (`RoomNo`),
-  CONSTRAINT `admitpatient_room_ibfk_2` FOREIGN KEY (`DoctorID`) REFERENCES `doctor` (`DoctorID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+  PRIMARY KEY (`PatientID`)
+  -- KEY `RoomNo` (`RoomNo`),
+  -- KEY `DoctorID` (`DoctorID`),
+  -- CONSTRAINT `admitpatient_room_ibfk_1` FOREIGN KEY (`RoomNo`) REFERENCES `room` (`RoomNo`),
+  -- CONSTRAINT `admitpatient_room_ibfk_2` FOREIGN KEY (`DoctorID`) REFERENCES `doctor` (`DoctorID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+DROP TABLE IF EXISTS `bill_room`;
 
 CREATE TABLE `bill_room` (
   `DischargeID` int(5) NOT NULL AUTO_INCREMENT,
@@ -25,14 +32,14 @@ CREATE TABLE `bill_room` (
   `TotalRoomCharges` int(10) DEFAULT NULL,
   PRIMARY KEY (`DischargeID`,`BillNo`),
   UNIQUE KEY `BillNo_UNIQUE` (`BillNo`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `dischargepatient_room` (
   `AdmitID` int(20) NOT NULL AUTO_INCREMENT,
   `DischargeDate` date DEFAULT NULL,
   `DP_Remarks` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`AdmitID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `doctor` (
   `DoctorID` int(10) NOT NULL AUTO_INCREMENT,
@@ -46,7 +53,7 @@ CREATE TABLE `doctor` (
   `DateOfJoining` date DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`DoctorID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `patientregistration` (
@@ -60,7 +67,7 @@ CREATE TABLE `patientregistration` (
   `BG` varchar(3) DEFAULT NULL,
   `Address` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`PatientID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `registration` (
   `name` varchar(20) DEFAULT NULL,
@@ -69,7 +76,7 @@ CREATE TABLE `registration` (
   `email_id` varchar(30) DEFAULT NULL,
   `contact_no` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `room` (
   `RoomNo` int(5) NOT NULL,
@@ -77,7 +84,7 @@ CREATE TABLE `room` (
   `RoomCharges` int(10) DEFAULT NULL,
   `RoomStatus` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`RoomNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `services` (
   `ServiceName` varchar(20) DEFAULT NULL,
@@ -88,10 +95,10 @@ CREATE TABLE `services` (
   PRIMARY KEY (`ServiceID`),
   KEY `PatientID` (`PatientID`),
   CONSTRAINT `services_ibfk_1` FOREIGN KEY (`PatientID`) REFERENCES `patientregistration` (`PatientID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
   `user_name` varchar(20) NOT NULL,
   `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

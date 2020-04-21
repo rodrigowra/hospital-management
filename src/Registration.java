@@ -348,7 +348,7 @@ try{
           
    Statement stmt;
        stmt= con.createStatement();
-       String sql1="Select PatientID from PatientRegistration where PatientID= '" + txtId.getText() + "'";
+       String sql1="Select PatientID from patientregistration where PatientID= '" + txtId.getText() + "'";
       rs=stmt.executeQuery(sql1);
       if(rs.next()){
         JOptionPane.showMessageDialog( this, "Patient ID already exists","Error", JOptionPane.ERROR_MESSAGE);
@@ -356,7 +356,7 @@ try{
         txtId.requestDefaultFocus();
        return;
       }
-            String sql= "insert into PatientRegistration(Patientname,Email,ContactNo,Age,Remarks,Gen,BG,Address)values('"/*+ txtId.getText() + "','"*/+ txtName.getText() +  "','"+ txtEmail.getText() + "','"+ txtContact.getText() + "'," + txtAge.getText() + ",'"+ txtInfo.getText() + "','" + cmbGender.getSelectedItem() + "','"+ cmbBG.getSelectedItem() + "','" + txtAdd.getText() + "')";
+            String sql= "insert into patientregistration(Patientname,Email,ContactNo,Age,Remarks,Gen,BG,Address)values('"/*+ txtId.getText() + "','"*/+ txtName.getText() +  "','"+ txtEmail.getText() + "','"+ txtContact.getText() + "'," + txtAge.getText() + ",'"+ txtInfo.getText() + "','" + cmbGender.getSelectedItem() + "','"+ cmbBG.getSelectedItem() + "','" + txtAdd.getText() + "')";
 
             pst=con.prepareStatement(sql);
             pst.execute();
@@ -380,7 +380,7 @@ frm.setVisible(true);        // TODO add your handling code here:
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         try{
             con=Connect.ConnectDB();
-            String sql= "update PatientRegistration set Patientname='"+ txtName.getText() + "',Email='"+ txtEmail.getText() + "',ContactNo='"+ txtContact.getText() + "',Age=" + txtAge.getText() + ",Remarks='"+ txtInfo.getText() + "',Gen='" + cmbGender.getSelectedItem() + "',BG='"+ cmbBG.getSelectedItem() + "',Address='" + txtAdd.getText() + "' where PatientID='" + txtId.getText() + "'";
+            String sql= "update patientregistration set Patientname='"+ txtName.getText() + "',Email='"+ txtEmail.getText() + "',ContactNo='"+ txtContact.getText() + "',Age=" + txtAge.getText() + ",Remarks='"+ txtInfo.getText() + "',Gen='" + cmbGender.getSelectedItem() + "',BG='"+ cmbBG.getSelectedItem() + "',Address='" + txtAdd.getText() + "' where PatientID='" + txtId.getText() + "'";
             pst=con.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(this,"Successfully updated","Record",JOptionPane.INFORMATION_MESSAGE);

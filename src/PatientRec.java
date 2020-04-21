@@ -27,7 +27,7 @@ PreparedStatement pst=null;
         Get_Data();
     }
 private void Get_Data(){
-           String sql="select PatientID as 'Patient ID', PatientName as 'Patient Name',Address as 'Address',ContactNo as 'Contact No',Email as 'Email ID',Age,Gen as 'Gender',BG as 'Blood Group',Remarks from Patientregistration";
+           String sql="select PatientID as 'Patient ID', PatientName as 'Patient Name',Address as 'Address',ContactNo as 'Contact No',Email as 'Email ID',Age,Gen as 'Gender',BG as 'Blood Group',Remarks from patientregistration";
            try{
                 pst=con.prepareStatement(sql);
                 rs= pst.executeQuery();
@@ -92,7 +92,7 @@ private void Get_Data(){
             con=Connect.ConnectDB();
             int row= jTable1.getSelectedRow();
             String table_click= jTable1.getModel().getValueAt(row, 0).toString();
-            String sql= "select * from PatientRegistration where PatientID = '" + table_click + "'";
+            String sql= "select * from patientRegistration where PatientID = '" + table_click + "'";
             pst=con.prepareStatement(sql);
             rs=  pst.executeQuery();
             if(rs.next()){

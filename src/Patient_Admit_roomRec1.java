@@ -28,7 +28,7 @@ PreparedStatement pst=null;
         setLocationRelativeTo(null);
     }
  private void Get_Data(){
-         String sql="Select PatientRegistration.PatientID as 'Patient ID',PatientRegistration.PatientName as 'Patient Name',PatientRegistration.Gen as 'Gender',PatientRegistration.BG as 'Blood Group',Disease,AdmitDate as 'Admit Date',Room.RoomNo as 'Room No',Doctor.DoctorID as 'Doctor ID',DoctorName as 'Doctor Name',AdmitPatient_Room.AP_Remarks as 'Remarks' from Room,Doctor,PatientRegistration,AdmitPatient_Room where Room.RoomNo=AdmitPatient_Room.RoomNo and Doctor.DoctorID=AdmitPatient_Room.DoctorID and PatientRegistration.PatientID=AdmitPatient_Room.PatientID order by admitdate";
+         String sql="Select patientregistration.PatientID as 'Patient ID',patientregistration.PatientName as 'Patient Name',patientregistration.Gen as 'Gender',patientregistration.BG as 'Blood Group',Disease,AdmitDate as 'Admit Date',Room.RoomNo as 'Room No',Doctor.DoctorID as 'Doctor ID',DoctorName as 'Doctor Name',AdmitPatient_Room.AP_Remarks as 'Remarks' from Room,Doctor,patientregistration,AdmitPatient_Room where Room.RoomNo=AdmitPatient_Room.RoomNo and Doctor.DoctorID=AdmitPatient_Room.DoctorID and patientregistration.PatientID=AdmitPatient_Room.PatientID order by admitdate";
          try{
          pst=con.prepareStatement(sql);
           rs= pst.executeQuery();
@@ -103,7 +103,7 @@ PreparedStatement pst=null;
             con=Connect.ConnectDB();
             int row= jTable1.getSelectedRow();
             String table_click= jTable1.getModel().getValueAt(row, 0).toString();
-            String sql="Select * from Room,Doctor,PatientRegistration,AdmitPatient_Room where Room.RoomNo=AdmitPatient_Room.RoomNo and Doctor.DoctorID=AdmitPatient_Room.DoctorID and PatientRegistration.PatientID=AdmitPatient_Room.PatientID and PatientRegistration.PatientID = '" + table_click + "'";   
+            String sql="Select * from Room,Doctor,patientregistration,AdmitPatient_Room where Room.RoomNo=AdmitPatient_Room.RoomNo and Doctor.DoctorID=AdmitPatient_Room.DoctorID and patientregistration.PatientID=AdmitPatient_Room.PatientID and patientregistration.PatientID = '" + table_click + "'";   
             pst=con.prepareStatement(sql);
             rs=  pst.executeQuery();
             if(rs.next()){

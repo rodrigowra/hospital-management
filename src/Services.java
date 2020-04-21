@@ -400,7 +400,7 @@ Statement stmt;
             con=Connect.ConnectDB();
             int row= tblPatient.getSelectedRow();
             String table_click= tblPatient.getModel().getValueAt(row, 0).toString();
-            String sql= "select * from PatientRegistration where PatientID = '" + table_click + "'";
+            String sql= "select * from patientregistration where PatientID = '" + table_click + "'";
             pst=con.prepareStatement(sql);
             rs=  pst.executeQuery();
             if(rs.next()){

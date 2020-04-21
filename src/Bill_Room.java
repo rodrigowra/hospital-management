@@ -37,7 +37,7 @@ public class Bill_Room extends javax.swing.JFrame {
     private void Get_Data1(){
       try{
         con=Connect.ConnectDB();
-       String sql="select PatientRegistration.PatientID as 'Patient ID', PatientName as 'Patient Name',sum(serviceCharges) as 'Service Charges' from Services,PatientRegistration where Services.PatientID=PatientRegistration.PatientID group by PatientRegistration.PatientID,PatientName order by PatientName";
+       String sql="select patientregistration.PatientID as 'Patient ID', PatientName as 'Patient Name',sum(serviceCharges) as 'Service Charges' from Services,patientregistration where Services.PatientID=patientregistration.PatientID group by patientregistration.PatientID,PatientName order by PatientName";
          pst=con.prepareStatement(sql);
          rs= pst.executeQuery();
          jTable1.setModel(DbUtils.resultSetToTableModel(rs));
